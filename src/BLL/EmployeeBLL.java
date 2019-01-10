@@ -6,7 +6,7 @@
 package BLL;
 
 import DAL.EmployeeDAL;
-import DAL.Employee;
+import DTO.Employee;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

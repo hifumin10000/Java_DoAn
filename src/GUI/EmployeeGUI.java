@@ -6,13 +6,14 @@
 package GUI;
 
 import BLL.EmployeeBLL;
-import DAL.Employee;
+import DTO.Employee;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -262,17 +263,17 @@ public class EmployeeGUI extends javax.swing.JFrame {
             employeeListModel.clear();
     }
 
-    public void setEmployee (Employee employee) {	
-        this.employeeModel = employee;
-        jTextField1.setText(String.valueOf(employee.getMaNV()));
-        jComboBox1.setSelectedItem(employee.getPhai());
-        jTextField2.setText(String.valueOf(employee.getCMND()));
-        jTextField3.setText(String.valueOf(employee.getDiaChiThuongTru()));
-        jTextField4.setText(String.valueOf(employee.getDiaChiTamTru()));
-        jTextField5.setText(String.valueOf(employee.getEmail()));
-        
-        
-    }
+//    public void setEmployee (Employee employee) {	
+//        this.employeeModel = employee;
+//        jTextField1.setText(String.valueOf(employee.getMaNV()));
+//        jComboBox1.setSelectedItem(employee.getPhai());
+//        jTextField2.setText(String.valueOf(employee.getCMND()));
+//        jTextField3.setText(String.valueOf(employee.getDiaChiThuongTru()));
+//        jTextField4.setText(String.valueOf(employee.getDiaChiTamTru()));
+//        jTextField5.setText(String.valueOf(employee.getEmail()));
+//        
+//        
+//    }
     public void stateButton(boolean value){
 //        
 //        btNew.setVisible(value);
@@ -284,6 +285,106 @@ public class EmployeeGUI extends javax.swing.JFrame {
         btCancel.setVisible(!value);
 //        
     }
+    protected boolean validateInput() {
+		int MaNV = Integer.parseInt(jTextField1.getText());	
+                String cbPhai = jComboBox1.getSelectedItem().toString() ;
+		int CMND = Integer.parseInt(jTextField2.getText());                         
+                String NgayCapCM = ns.format(jDateChooser5.getDate());                            
+                String cbNoiCapCM = jComboBox6.getSelectedItem().toString() ;
+                String Sothe = jTextField8.getText();
+                String HoTen = jTextField15.getText();                
+                String NamSinh = ns.format(jDateChooser4.getDate());   
+               // Date NamSinh = jDateChooser4.getDate();
+                String cbNS = jComboBox5.getSelectedItem().toString() ;                            
+                String DiaChiThuongTru = jTextField3.getText();
+                String DiaChiTamTru = jTextField4.getText();
+                int DienThoaiThuongChu = Integer.parseInt(jTextField16.getText());
+                int DiDong = Integer.parseInt(jTextField17.getText());
+                String Email = jTextField5.getText();
+                String NgayVaoDoan = ns.format(jDateChooser6.getDate());                
+                String NgayVaoDang = ns.format(jDateChooser7.getDate());
+                String cbDt = jComboBox2.getSelectedItem().toString() ;
+                String cbTG = jComboBox4.getSelectedItem().toString() ;
+                String cbQuocTich = jComboBox7.getSelectedItem().toString() ;
+                int Passport = Integer.parseInt(jTextField6.getText());
+                String NgayCapPassport = ns.format(jDateChooser8.getDate());
+                String NoiCapPassport = jTextField19.getText();                                
+                String cbTTHN = jComboBox3.getSelectedItem().toString() ;
+                int MaSoThue = Integer.parseInt(jTextField13.getText());
+                String NgayCapMST = ns.format(jDateChooser9.getDate());
+                int SoTaiKhoan = Integer.parseInt(jTextField7.getText());
+                String MaTaiKhoan = jTextField14.getText();
+                String cbNH = jComboBox9.getSelectedItem().toString() ;
+                String cbTD = jComboBox8.getSelectedItem().toString() ;
+                String cbBC = jComboBox11.getSelectedItem().toString() ;
+                String HocHam = jTextField22.getText();
+                String ChuyenMon = jTextField21.getText();
+                String KNLVChuyenMon = jTextField23.getText();
+		String cbLNV = jComboBox10.getSelectedItem().toString() ;
+                String cbDV = jComboBox12.getSelectedItem().toString() ;
+                String cbPB = jComboBox14.getSelectedItem().toString() ;
+                String cbBP = jComboBox16.getSelectedItem().toString() ;
+                String cbCD = jComboBox13.getSelectedItem().toString() ;     
+                String cbCV = jComboBox15.getSelectedItem().toString() ;                
+                String cbDDLV = jComboBox17.getSelectedItem().toString() ;
+                String LuongTV = jTextField25.getText() ;
+                String LuongCB = jTextField26.getText();
+                String LuongKD = jTextField27.getText();
+                String NgayVaoCty = ns.format(jDateChooser2.getDate());
+                String NgayHetHanTV = ns.format(jDateChooser3.getDate());
+                String NgayVaoChinhThuc = ns.format(jDateChooser10.getDate());
+                if (employeeModel == null) {		
+			employeeModel = new Employee();
+		}
+		employeeModel.setMaNV(MaNV);
+		employeeModel.setPhai(cbPhai);                
+		employeeModel.setCMND(CMND);
+                employeeModel.setNgayCapCMND(NgayCapCM);
+                employeeModel.setNoiCapCMND(cbNoiCapCM);
+                employeeModel.setSothe(Sothe);
+                employeeModel.setHoTen(HoTen);
+                employeeModel.setNamSinh(NamSinh);
+                employeeModel.setNoiSinh(cbNS);
+                employeeModel.setDiaChiThuongTru(DiaChiThuongTru);
+                employeeModel.setDiaChiTamTru(DiaChiTamTru);
+                employeeModel.setDienThoaiThuongTru(DienThoaiThuongChu);
+                employeeModel.setDiDong(DiDong);
+                employeeModel.setEmail(Email);
+                employeeModel.setNgayVaoDoan(NgayVaoDoan);
+                employeeModel.setNgayVaoDang(NgayVaoDang);
+                employeeModel.setDanToc(cbDt);
+                employeeModel.setTonGiao(cbTG);
+                employeeModel.setQuocTich(cbQuocTich);               
+		employeeModel.setPassport(Passport);
+                employeeModel.setNgayCapPassport(NgayCapPassport);
+                employeeModel.setNoiCapPassport(NoiCapPassport);
+                employeeModel.setTinhTrangHonNhan(cbTTHN);
+                employeeModel.setMaSoThue(MaSoThue);
+                employeeModel.setNgayCapMST(NgayCapMST);
+                employeeModel.setSoTaiKhoan(SoTaiKhoan);
+                employeeModel.setMaTaiKhoan(MaTaiKhoan);
+                employeeModel.setNganHang(cbNH);
+                employeeModel.setTrinhDo(cbTD);
+                employeeModel.setBangCap(cbBC);
+                employeeModel.setHocHam(HocHam);
+                employeeModel.setChuyenMon(ChuyenMon);
+                employeeModel.setKNLVChuyenMon(KNLVChuyenMon);
+                employeeModel.setLoaiNhanVien(cbLNV);
+                employeeModel.setDonVi(cbDV);
+                employeeModel.setPhongBan(cbPB);
+                employeeModel.setBoPhan(cbBP);
+                employeeModel.setChucDanh(cbCD);
+                employeeModel.setChucVu(cbCV);
+                employeeModel.setDiaDiemLamViec(cbDDLV);
+                employeeModel.setLuongThuViec(LuongTV);
+                employeeModel.setLuongCB(LuongCB);
+                employeeModel.setLuongKD(LuongKD);
+                employeeModel.setNgayVaoCty(NgayVaoCty);
+                employeeModel.setNgayVaoChinhThuc(NgayVaoChinhThuc);
+                employeeModel.setNgayHetHanTV(NgayHetHanTV);
+                employeeBLL.AddNewEmployeeDAL(employeeModel);			
+		return true;
+	}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -372,11 +473,11 @@ public class EmployeeGUI extends javax.swing.JFrame {
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
         jComboBox10 = new javax.swing.JComboBox<>();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jDateChooser3 = new com.toedter.calendar.JDateChooser();
+        jDateChooser10 = new com.toedter.calendar.JDateChooser();
         jPanel6 = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
@@ -548,8 +649,12 @@ public class EmployeeGUI extends javax.swing.JFrame {
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(887, 0, 260, 266));
         jPanel2.add(jDateChooser4, new org.netbeans.lib.awtextra.AbsoluteConstraints(391, 40, 180, -1));
         jPanel2.add(jDateChooser5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 180, -1));
+
+        jDateChooser6.setDateFormatString("dd/MM/yyyy");
         jPanel2.add(jDateChooser6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 180, -1));
         jPanel2.add(jDateChooser7, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 160, 200, -1));
+
+        jDateChooser8.setDateFormatString("dd/MM/yyyy");
         jPanel2.add(jDateChooser8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 180, -1));
         jPanel2.add(jDateChooser9, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 240, 200, -1));
 
@@ -598,7 +703,6 @@ public class EmployeeGUI extends javax.swing.JFrame {
 
         jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel5.add(jComboBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 27, 170, -1));
-        jPanel5.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 67, 170, -1));
 
         jLabel38.setText("Ngày vào công ty");
         jPanel5.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(284, 30, 100, -1));
@@ -607,6 +711,7 @@ public class EmployeeGUI extends javax.swing.JFrame {
         jPanel5.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(573, 27, 100, 20));
         jPanel5.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(394, 27, 175, -1));
         jPanel5.add(jDateChooser3, new org.netbeans.lib.awtextra.AbsoluteConstraints(677, 27, 202, -1));
+        jPanel5.add(jDateChooser10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 170, -1));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nơi làm việc", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -747,105 +852,9 @@ public class EmployeeGUI extends javax.swing.JFrame {
     public SimpleDateFormat ns = new SimpleDateFormat("dd-mm-yyyy");
     private void btSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveActionPerformed
    //     stateButton(true);
-                int MaNV = Integer.parseInt(jTextField1.getText());	
-                String cbPhai = jComboBox1.getSelectedItem().toString() ;
-		int CMND = Integer.parseInt(jTextField2.getText());                         
-                String NgayCapCM = ns.format(jDateChooser5.getDate());                            
-                String cbNoiCapCM = jComboBox6.getSelectedItem().toString() ;
-                String Sothe = jTextField8.getText();
-                String HoTen = jTextField15.getText();                
-                String NamSinh = ns.format(jDateChooser4.getDate());   
-               // Date NamSinh = jDateChooser4.getDate();
-                String cbNS = jComboBox5.getSelectedItem().toString() ;                            
-                String DiaChiThuongTru = jTextField3.getText();
-                String DiaChiTamTru = jTextField4.getText();
-                int DienThoaiThuongChu = Integer.parseInt(jTextField16.getText());
-                int DiDong = Integer.parseInt(jTextField17.getText());
-                String Email = jTextField5.getText();
-                String NgayVaoDoan = ns.format(jDateChooser6.getDate());                
-                String NgayVaoDang = ns.format(jDateChooser7.getDate());
-                String cbDt = jComboBox2.getSelectedItem().toString() ;
-                String cbTG = jComboBox4.getSelectedItem().toString() ;
-                String cbQuocTich = jComboBox7.getSelectedItem().toString() ;
-                int Passport = Integer.parseInt(jTextField6.getText());
-                String NgayCapPassport = ns.format(jDateChooser8.getDate());
-                String NoiCapPassport = jTextField19.getText();                                
-                String cbTTHN = jComboBox3.getSelectedItem().toString() ;
-                int MaSoThue = Integer.parseInt(jTextField13.getText());
-                String NgayCapMST = ns.format(jDateChooser9.getDate());
-                int SoTaiKhoan = Integer.parseInt(jTextField7.getText());
-                String MaTaiKhoan = jTextField14.getText();
-                String cbNH = jComboBox9.getSelectedItem().toString() ;
-                String cbTD = jComboBox8.getSelectedItem().toString() ;
-                String cbBC = jComboBox11.getSelectedItem().toString() ;
-                String HocHam = jTextField22.getText();
-                String ChuyenMon = jTextField21.getText();
-                String KNLVChuyenMon = jTextField23.getText();
-		String cbLNV = jComboBox10.getSelectedItem().toString() ;
-                String cbDV = jComboBox12.getSelectedItem().toString() ;
-                String cbPB = jComboBox14.getSelectedItem().toString() ;
-                String cbBP = jComboBox16.getSelectedItem().toString() ;
-                String cbCD = jComboBox13.getSelectedItem().toString() ;     
-                String cbCV = jComboBox15.getSelectedItem().toString() ;                
-                String cbDDLV = jComboBox17.getSelectedItem().toString() ;
-                String LuongTV = jTextField25.getText() ;
-                String LuongCB = jTextField26.getText();
-                String LuongKD = jTextField27.getText();
-                String NgayVaoCty = ns.format(jDateChooser2.getDate());
-                String NgayHetHanTV = ns.format(jDateChooser3.getDate());
-                String NgayVaoChinhThuc = ns.format(jDateChooser1.getDate());
-                if (employeeModel == null) {		
-			employeeModel = new Employee();
-		}
-		employeeModel.setMaNV(MaNV);
-		employeeModel.setPhai(cbPhai);                
-		employeeModel.setCMND(CMND);
-                employeeModel.setNgayCapCMND(NgayCapCM);
-                employeeModel.setNoiCapCMND(cbNoiCapCM);
-                employeeModel.setSothe(Sothe);
-                employeeModel.setHoTen(HoTen);
-                employeeModel.setNamSinh(NamSinh);
-                employeeModel.setNoiSinh(cbNS);
-                employeeModel.setDiaChiThuongTru(DiaChiThuongTru);
-                employeeModel.setDiaChiTamTru(DiaChiTamTru);
-                employeeModel.setDienThoaiThuongTru(DienThoaiThuongChu);
-                employeeModel.setDiDong(DiDong);
-                employeeModel.setEmail(Email);
-                employeeModel.setNgayVaoDoan(NgayVaoDoan);
-                employeeModel.setNgayVaoDang(NgayVaoDang);
-                employeeModel.setDanToc(cbDt);
-                employeeModel.setTonGiao(cbTG);
-                employeeModel.setQuocTich(cbQuocTich);               
-		employeeModel.setPassport(Passport);
-                employeeModel.setNgayCapPassport(NgayCapPassport);
-                employeeModel.setNoiCapPassport(NoiCapPassport);
-                employeeModel.setTinhTrangHonNhan(cbTTHN);
-                employeeModel.setMaSoThue(MaSoThue);
-                employeeModel.setNgayCapMST(NgayCapMST);
-                employeeModel.setSoTaiKhoan(SoTaiKhoan);
-                employeeModel.setMaTaiKhoan(MaTaiKhoan);
-                employeeModel.setNganHang(cbNH);
-                employeeModel.setTrinhDo(cbTD);
-                employeeModel.setBangCap(cbBC);
-                employeeModel.setHocHam(HocHam);
-                employeeModel.setChuyenMon(ChuyenMon);
-                employeeModel.setKNLVChuyenMon(KNLVChuyenMon);
-                employeeModel.setLoaiNhanVien(cbLNV);
-                employeeModel.setDonVi(cbDV);
-                employeeModel.setPhongBan(cbPB);
-                employeeModel.setBoPhan(cbBP);
-                employeeModel.setChucDanh(cbCD);
-                employeeModel.setChucVu(cbCV);
-                employeeModel.setDiaDiemLamViec(cbDDLV);
-                employeeModel.setLuongThuViec(LuongTV);
-                employeeModel.setLuongCB(LuongCB);
-                employeeModel.setLuongKD(LuongKD);
-                employeeModel.setNgayVaoCty(NgayVaoCty);
-                employeeModel.setNgayVaoChinhThuc(NgayVaoChinhThuc);
-                employeeModel.setNgayHetHanTV(NgayHetHanTV);
-                employeeBLL.AddNewEmployeeDAL(employeeModel);	
-                dispose();
-   
+          if (validateInput()) {
+            dispose();					
+	}
     }//GEN-LAST:event_btSaveActionPerformed
 
     private void btCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelActionPerformed
@@ -901,7 +910,8 @@ public class EmployeeGUI extends javax.swing.JFrame {
                 String LuongKD = jTextField27.getText();
                 String NgayVaoCty = ns.format(jDateChooser2.getDate());
                 String NgayHetHanTV = ns.format(jDateChooser3.getDate());
-                String NgayVaoChinhThuc = ns.format(jDateChooser1.getDate());           		      
+                String NgayVaoChinhThuc = ns.format(jDateChooser10.getDate());  
+                employeeModel = new Employee();                
 		employeeModel.setMaNV(MaNV);
 		employeeModel.setPhai(cbPhai);                
 		employeeModel.setCMND(CMND);
@@ -993,35 +1003,35 @@ public class EmployeeGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCancel;
-    private javax.swing.JButton btSave;
+    public javax.swing.JButton btSave;
     private javax.swing.JButton btSua;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox10;
-    private javax.swing.JComboBox<String> jComboBox11;
-    private javax.swing.JComboBox<String> jComboBox12;
-    private javax.swing.JComboBox<String> jComboBox13;
-    private javax.swing.JComboBox<String> jComboBox14;
-    private javax.swing.JComboBox<String> jComboBox15;
-    private javax.swing.JComboBox<String> jComboBox16;
-    private javax.swing.JComboBox<String> jComboBox17;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JComboBox<String> jComboBox7;
-    private javax.swing.JComboBox<String> jComboBox8;
-    private javax.swing.JComboBox<String> jComboBox9;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private com.toedter.calendar.JDateChooser jDateChooser3;
-    private com.toedter.calendar.JDateChooser jDateChooser4;
-    private com.toedter.calendar.JDateChooser jDateChooser5;
-    private com.toedter.calendar.JDateChooser jDateChooser6;
-    private com.toedter.calendar.JDateChooser jDateChooser7;
-    private com.toedter.calendar.JDateChooser jDateChooser8;
-    private com.toedter.calendar.JDateChooser jDateChooser9;
+    public javax.swing.JComboBox<String> jComboBox1;
+    public javax.swing.JComboBox<String> jComboBox10;
+    public javax.swing.JComboBox<String> jComboBox11;
+    public javax.swing.JComboBox<String> jComboBox12;
+    public javax.swing.JComboBox<String> jComboBox13;
+    public javax.swing.JComboBox<String> jComboBox14;
+    public javax.swing.JComboBox<String> jComboBox15;
+    public javax.swing.JComboBox<String> jComboBox16;
+    public javax.swing.JComboBox<String> jComboBox17;
+    public javax.swing.JComboBox<String> jComboBox2;
+    public javax.swing.JComboBox<String> jComboBox3;
+    public javax.swing.JComboBox<String> jComboBox4;
+    public javax.swing.JComboBox<String> jComboBox5;
+    public javax.swing.JComboBox<String> jComboBox6;
+    public javax.swing.JComboBox<String> jComboBox7;
+    public javax.swing.JComboBox<String> jComboBox8;
+    public javax.swing.JComboBox<String> jComboBox9;
+    public com.toedter.calendar.JDateChooser jDateChooser10;
+    public com.toedter.calendar.JDateChooser jDateChooser2;
+    public com.toedter.calendar.JDateChooser jDateChooser3;
+    public com.toedter.calendar.JDateChooser jDateChooser4;
+    public com.toedter.calendar.JDateChooser jDateChooser5;
+    public com.toedter.calendar.JDateChooser jDateChooser6;
+    public com.toedter.calendar.JDateChooser jDateChooser7;
+    public com.toedter.calendar.JDateChooser jDateChooser8;
+    public com.toedter.calendar.JDateChooser jDateChooser9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1078,26 +1088,26 @@ public class EmployeeGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField21;
-    private javax.swing.JTextField jTextField22;
-    private javax.swing.JTextField jTextField23;
-    private javax.swing.JTextField jTextField24;
-    private javax.swing.JTextField jTextField25;
-    private javax.swing.JTextField jTextField26;
-    private javax.swing.JTextField jTextField27;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    public javax.swing.JTextField jTextField1;
+    public javax.swing.JTextField jTextField13;
+    public javax.swing.JTextField jTextField14;
+    public javax.swing.JTextField jTextField15;
+    public javax.swing.JTextField jTextField16;
+    public javax.swing.JTextField jTextField17;
+    public javax.swing.JTextField jTextField19;
+    public javax.swing.JTextField jTextField2;
+    public javax.swing.JTextField jTextField21;
+    public javax.swing.JTextField jTextField22;
+    public javax.swing.JTextField jTextField23;
+    public javax.swing.JTextField jTextField24;
+    public javax.swing.JTextField jTextField25;
+    public javax.swing.JTextField jTextField26;
+    public javax.swing.JTextField jTextField27;
+    public javax.swing.JTextField jTextField3;
+    public javax.swing.JTextField jTextField4;
+    public javax.swing.JTextField jTextField5;
+    public javax.swing.JTextField jTextField6;
+    public javax.swing.JTextField jTextField7;
+    public javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 }

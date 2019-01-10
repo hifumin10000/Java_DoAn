@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package DAL;
+import DTO.Employee;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -767,11 +768,11 @@ public class EmployeeDAL extends Database{
         conn = getConnection(); 
          try { 
              stmt = conn.createStatement();
+         String sql = "DELETE FROM nhanvien WHERE MaNV = "+MaNV+" ";
+         stmt.executeUpdate(sql);
          } catch (SQLException ex) {
              Logger.getLogger(EmployeeDAL.class.getName()).log(Level.SEVERE, null, ex);
          }  
-         String sql = "DELETE FROM nhanvien WHERE MaNV = "+MaNV+" ";
-         stmt.executeUpdate(sql);
          
     }
     
